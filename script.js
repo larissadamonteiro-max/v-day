@@ -53,17 +53,15 @@ music.play().then(() => {
 })
 
 function toggleMusic() {
-    const music = document.getElementById("bg-music");
-
-    if (music.paused) {
-        music.volume = 0.4;
-        music.play().catch(() => {});
-        musicPlaying = true;
-        document.getElementById("music-toggle").textContent = "🔊";
+    if (musicPlaying) {
+        music.pause()
+        musicPlaying = false
+        document.getElementById('music-toggle').textContent = '🔇'
     } else {
-        music.pause();
-        musicPlaying = false;
-        document.getElementById("music-toggle").textContent = "🔈";
+        music.muted = false
+        music.play()
+        musicPlaying = true
+        document.getElementById('music-toggle').textContent = '🔊'
     }
 }
 
